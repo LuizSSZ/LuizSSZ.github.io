@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio</title>
+
+    <!--Fontes de Texto-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap" rel="stylesheet">
+
+    <!--Estilos CSS-->
+    <style>
+        body {
+            background-color: black;
+            font-family: 'Fira Code';
+            color: #33cc33;
+            overflow: hidden;
+            /* Evita barras de rolagem */
+            position: relative;
+            /* Para posicionar as estrelas */
+        }
+
+        section,
+        main,
+        footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        span {
+            color: white;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+
+        }
+
+        a:hover {
+            color: red;
+        }
+
+        img {
+            width: 200px;
+            border: 3px solid white;
+            border-radius: 50%;
+            transition: transform 0.5s ease;
+        }
+
+        img:hover {
+            border: 10px solid #33cc33;
+            border-radius: 50%;
+            transform: rotate(360deg);
+        }
+
+        ul {
+            text-align: center;
+            list-style-position: inside;
+            color: white;
+        }
+
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle 1.5s infinite alternate;
+            will-change: transform;
+            /* Melhora a performance da animação */
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0.2;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes move {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(calc(100vw * var(--moveX)), calc(100vh * var(--moveY)));
+            }
+        }
+
+        @keyframes starMovement {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(calc(100vw * (0.5 - random())), calc(100vh * (0.5 - random())));
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <section>
+        <div>
+            <h1>
+                Olá me chamo <span>Luiz Gustavo</span>!
+            </h1>
+        </div>
+    </section>
+
+    <section>
+        <div>
+            <a href="https://github.com/LuizSSZ">
+                <img src="images/logo_do_port.png" alt="Avatar do Luiz Gustavo (SugZiuL)">
+            </a>
+        </div>
+    </section>
+
+    <section>
+        <div>
+            <h2>
+                E seja muito bem-vindo ao meu <span>Portfólio</span>.
+            </h2>
+        </div>
+    </section>
+
+
+    <main>
+        <div>
+            <p>
+                Eu tenho <span><strong>20 anos</strong></span> e sou do <span><strong><a
+                            href="https://pt.wikipedia.org/wiki/Brasil">Brasil</a></strong></span>, sou um estudante
+                curioso que gosta muito de aprender sobre diversas coisas <br> entre elas a principal é a Natureza do
+                Universo e Matemática.
+            </p>
+            <p>
+                Meus Hobbies favoritos são:
+            </p>
+            <div>
+                <ul>
+                    <li>Jogar Vídeo-game</li>
+                    <li>Desenvolver programas para computadores</li>
+                    <li>Jogar Futebol</li>
+                    <li>Assistir Filmes e Séries</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>
+            Para entrar em contato comigo acesse meu
+            <span>
+                <strong>
+                    <a href="https://github.com/LuizSSZ">GitHub</a>
+                </strong>
+            </span>
+        </p>
+    </footer>
+
+    <!--Scripts-->
+
+    <script>
+        const numStars = 100; // Número total de estrelas
+        const body = document.body;
+
+        // Criar estrelas
+        for (let i = 0; i < numStars; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            star.style.width = `${Math.random() * 3 + 1}px`;
+            star.style.height = star.style.width;
+            star.style.top = `${Math.random() * 100}vh`;
+            star.style.left = `${Math.random() * 100}vw`;
+
+            // Adicionar variáveis CSS para movimento aleatório
+            star.style.setProperty('--moveX', (Math.random() * 0.5 - 0.25).toString()); // Movimento X aleatório
+            star.style.setProperty('--moveY', (Math.random() * 0.5 - 0.25).toString()); // Movimento Y aleatório
+            star.style.animationDuration = `${Math.random() * 5 + 5}s`; // Duração aleatória para o movimento
+
+            star.style.animationName = 'move'; // Animação de movimento
+            star.style.animationIterationCount = 'infinite'; // Repetição infinita
+
+            body.appendChild(star);
+        }
+    </script>
+
+</body>
+
+</html>

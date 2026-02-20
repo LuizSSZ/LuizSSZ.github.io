@@ -2,16 +2,30 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Luiz Gustavo | Portfólio</title>
 
-    <!-- Fontes -->
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Orbitron:wght@500&display=swap"
-        rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <!-- Estilos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+
     <style>
+        :root {
+            --bg: #050a14;
+            --bg-2: #0a1628;
+            --surface: rgba(12, 25, 43, 0.72);
+            --surface-2: rgba(16, 35, 58, 0.88);
+            --text: #e7f0ff;
+            --muted: #9db4cf;
+            --primary: #7ad5ff;
+            --line: rgba(142, 185, 228, 0.25);
+            --shadow: 0 14px 28px rgba(3, 7, 14, 0.45);
+            --radius: 16px;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -19,234 +33,361 @@
         }
 
         body {
-            font-family: 'Fira Code', monospace;
-            background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
-            color: #ccc;
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--text);
             min-height: 100vh;
+            background:
+                radial-gradient(circle at 15% 10%, rgba(71, 141, 211, 0.28), transparent 34%),
+                radial-gradient(circle at 85% 18%, rgba(52, 110, 171, 0.22), transparent 36%),
+                linear-gradient(165deg, var(--bg), var(--bg-2) 42%, var(--bg));
+            line-height: 1.65;
             overflow-x: hidden;
             position: relative;
         }
 
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image: radial-gradient(circle, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+            background-size: 3px 3px;
+            opacity: 0.08;
+        }
+
         header {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 72px 20px 24px;
             text-align: center;
-            padding: 50px 20px 20px;
         }
 
         header h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.5rem;
-            color: #33ccff;
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-shadow: 0 0 24px rgba(122, 213, 255, 0.32);
+        }
+
+        header h3 {
+            margin-top: 8px;
+            color: var(--primary);
+            font-size: 1rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 500;
         }
 
         header h2 {
-            font-size: 1.2rem;
-            color: #666;
             margin-top: 10px;
+            color: var(--muted);
+            font-size: 1.05rem;
+            font-weight: 500;
         }
 
         .container {
             display: flex;
-            /* Ativa o flexbox */
             justify-content: center;
-            /* Centraliza horizontalmente */
-            align-items: center;
-            /* Centraliza verticalmente */
-            flex-wrap: wrap;
-            /* Permite que o conteúdo se ajuste se houver mais elementos */
-            margin-top: 20px;
-            /* Espaçamento acima para não ficar grudado ao topo */
+            margin-top: 28px;
         }
 
         .profile-img {
-            width: 180px;
-            height: 180px;
+            width: 190px;
+            height: 190px;
             border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid #33ccff;
-            margin: 20px 0;
-            transition: 0.5s ease-in-out;
-            position: relative;
-            /* Necessário para o posicionamento da imagem sobreposta */
             overflow: hidden;
-            /* Garante que a imagem não ultrapasse os limites do container */
+            border: 3px solid rgba(122, 213, 255, 0.8);
+            position: relative;
+            box-shadow: var(--shadow), 0 0 0 10px rgba(23, 54, 87, 0.35);
+            transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
         }
 
         .profile-img img {
             width: 100%;
             height: 100%;
-            transition: opacity 0.5s ease-in-out;
-            /* Transição suave da imagem original */
+            object-fit: cover;
+            transition: opacity 0.28s ease;
         }
 
         .profile-img::after {
-            content: '';
+            content: "";
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('./images/luiz-gustavo.jpeg');
-            /* Imagem que será visível ao passar o mouse */
-            background-size: cover;
-            background-position: center;
+            inset: 0;
+            background: url('./images/luiz-gustavo.png') center/cover;
             opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-            border-radius: 50%;
+            transition: opacity 0.28s ease;
+        }
+
+        .profile-img:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 36px rgba(3, 7, 14, 0.52), 0 0 26px rgba(122, 213, 255, 0.24);
+            border-color: #bcecff;
         }
 
         .profile-img:hover img {
             opacity: 0;
-            /* Torna a imagem original invisível */
         }
 
         .profile-img:hover::after {
             opacity: 1;
-            /* Torna a imagem sobreposta visível */
         }
-
-        .profile-img:hover {
-            transform: scale(1.05) rotate(5deg);
-            border-color: #66ffff;
-        }
-
 
         main {
-            max-width: 900px;
+            max-width: 1080px;
             margin: 0 auto;
-            padding: 20px;
-            text-align: center;
+            padding: 12px 20px 56px;
         }
 
         section {
-            margin: 40px 0;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(6px);
+            margin: 24px 0;
+            padding: 28px 22px;
         }
 
         section h3 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.8rem;
-            color: #33ccff;
-            margin-bottom: 15px;
+            text-align: center;
+            margin-bottom: 14px;
+            font-size: 1.45rem;
+            letter-spacing: 0.01em;
         }
 
-        section p,
-        ul {
-            font-size: 1rem;
-            line-height: 1.6;
+        #sobre>p {
+            color: var(--muted);
+            max-width: 74ch;
+            margin: 0 auto;
+            text-align: center;
         }
 
-        ul {
-            list-style: none;
-            padding: 0;
+        .socials {
+            margin-top: 18px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
         }
 
-        ul li {
-            margin: 8px 0;
+        .socials a {
+            background: rgba(10, 21, 38, 0.95);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            color: var(--text);
+            text-decoration: none;
+            padding: 14px 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
         }
 
-        .inside {
-            list-style-position: inside;
+        .socials a:hover {
+            transform: translateY(-3px);
+            border-color: rgba(186, 228, 255, 0.8);
+            box-shadow: 0 8px 20px rgba(3, 7, 14, 0.45);
+        }
+
+        .socials i {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .socials p {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.92rem;
+        }
+
+        .projects {
+            margin-top: 18px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 14px;
+        }
+
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background: var(--surface-2);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 14px;
+        }
+
+        .project-card a {
+            color: #f2f8ff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .project-card a:hover {
+            color: var(--primary);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 170px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 1px solid rgba(143, 188, 232, 0.28);
         }
 
         #tecnico {
-            font-size: 1.7rem;
-            color: #33ccff;
-            font-family: 'Orbitron', sans-serif;
+            margin: 8px 0 10px;
+            text-align: center;
+            font-size: 1.4rem;
+            color: var(--primary);
         }
 
-        #habilidades {
-            font-size: 1.2rem;
-            color: #33ccff;
-            font-family: 'Orbitron', sans-serif;
+        .skills-list {
+            background: rgba(11, 25, 44, 0.94);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 22px 24px;
+            list-style: decimal;
+            color: #ddecff;
+        }
+
+        .skills-list>li {
+            margin: 10px 0;
+            font-size: 1.08rem;
+            font-weight: 600;
+        }
+
+        .skills-items {
+            list-style: none;
+            margin: 8px 0 16px;
+            color: var(--muted);
+        }
+
+        .skills-items li {
+            margin: 8px 0;
+            font-size: 0.98rem;
+            font-weight: 400;
         }
 
         .destaque {
-            color: #33ccff;
+            color: var(--primary);
+            font-weight: 600;
         }
 
-        .socials a,
-        .projects a {
-            display: inline-block;
-            margin: 10px;
-            padding: 10px 20px;
-            background-color: #1f1f1f;
-            color: #33ccff;
-            border: 2px solid #33ccff;
-            border-radius: 30px;
-            text-decoration: none;
-            transition: 0.3s;
+        .tech-stack {
+            margin: 14px 0 18px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 10px;
         }
 
-        .socials a:hover,
-        .projects a:hover {
-            background-color: #33ccff;
-            color: #1f1f1f;
+        .tech-chip {
+            background: rgba(10, 21, 38, 0.95);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 10px 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.92rem;
+            color: #d7e8fb;
+        }
+
+        .tech-chip i {
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        .tech-chip .devicon-nextjs-original {
+            color: #f4f8ff;
         }
 
         footer {
             text-align: center;
-            padding: 20px;
-            font-size: 0.9rem;
-            color: #555;
+            color: var(--muted);
+            font-size: 0.92rem;
+            padding: 16px 20px 30px;
         }
 
-        /* Estrelas de fundo */
         .star {
-            position: absolute;
-            background: white;
+            position: fixed;
             border-radius: 50%;
-            animation: move 10s linear infinite;
-            opacity: 0.8;
+            background: #fff;
+            opacity: 0.45;
+            pointer-events: none;
+            animation: drift linear infinite;
+            will-change: transform;
         }
 
-        @keyframes move {
+        @keyframes drift {
             from {
-                transform: translateY(0);
+                transform: translate3d(0, -6vh, 0);
             }
 
             to {
-                transform: translateY(100vh);
+                transform: translate3d(0, 106vh, 0);
+            }
+        }
+
+        @media (max-width: 760px) {
+            header {
+                padding-top: 46px;
+            }
+
+            section {
+                padding: 20px 14px;
+            }
+
+            .project-card img {
+                height: 160px;
+            }
+
+            .skills-list {
+                padding: 16px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+                scroll-behavior: auto !important;
             }
         }
     </style>
 </head>
 
 <body>
-
     <header>
         <h1>Luiz Gustavo</h1>
-        <h3>(SugZiuL)<h3>
-                <h2> Entusiasta da Tecnologia e Inovação | Curioso por Natureza </h2>
-                <div class="container">
-                    <div class="profile-img">
-                        <img src="images/logo_do_port.png" alt="Imagem de perfil" />
-                    </div>
-                </div>
+        <h3>(SugZiuL)</h3>
+        <h2>Entusiasta da Tecnologia e Inovação | Curioso por Natureza</h2>
+        <div class="container">
+            <div class="profile-img">
+                <img src="images/logo_do_port.png" alt="Imagem de perfil" fetchpriority="high" />
+            </div>
+        </div>
     </header>
 
     <main>
-
         <section id="sobre">
             <h3>Sobre Mim</h3>
-            <p>Tenho 21 anos e moro no Brasil. Atualmente estou cursando ciência da computação, sou apaixonado por
-                entender as coisas ao meu redor, e sempre estou em busca de novos aprendizados e desafios.</p>
+            <p>Tenho 21 anos e moro no Brasil. Atualmente estou cursando ciência da computação, sou apaixonado por entender as coisas ao meu redor e estou sempre em busca de novos aprendizados e desafios.</p>
+
             <section id="socials">
                 <h3>Redes Sociais</h3>
-                <div class="socials" style="text-align: center; margin-top: 20px;">
-                    <a href="https://github.com/LuizSSZ" target="_blank"
-                        style="margin: 0 15px; text-decoration: none; color: #333;">
-                        <i class="fab fa-github" style="font-size: 40px;"></i>
+                <div class="socials">
+                    <a href="https://github.com/LuizSSZ" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i>
                         <p>GitHub</p>
                     </a>
-
-                    <a href="https://www.linkedin.com/in/luizgustavosilvasouza" target="_blank"
-                        style="margin: 0 15px; text-decoration: none; color: #0077b5;">
-                        <i class="fab fa-linkedin" style="font-size: 40px;"></i>
+                    <a href="https://www.linkedin.com/in/luizgustavosilvasouza" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-linkedin"></i>
                         <p>LinkedIn</p>
                     </a>
-
-                    <a href="https://instagram.com/sugziul" target="_blank"
-                        style="margin: 0 15px; text-decoration: none; color: #e4405f;">
-                        <i class="fab fa-instagram" style="font-size: 40px;"></i>
+                    <a href="https://instagram.com/sugziul" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-instagram"></i>
                         <p>Instagram</p>
                     </a>
                 </div>
@@ -254,141 +395,125 @@
 
             <section id="projects">
                 <h3>Meus Projetos</h3>
-                <div class="projects" style="text-align: center;">
+                <div class="projects">
+                    <article class="project-card">
+                        <a href="https://dislon.sugziul.shop/" target="_blank" rel="noopener noreferrer">LLM + RAG = ChatBot</a>
+                        <img src="./images/chatbot.jpg" alt="Prévia Modelo de LLM que utiliza RAG" loading="lazy" decoding="async" />
+                    </article>
 
-                    <a href="https://dislon.sugziul.shop/" target="_blank">
-                        LLM + RAG = ChatBot
-                    </a>
-                    <img src="./images/chatbot.jpg" alt="Prévia Modelo de LLM que utiliza RAG"
-                        style="display: block; width: 100%; max-width: 300px; height: auto; margin: 10px auto; border-radius: 8px;">
- 
-                    <a href="https://sistemadegerenciamentodeproducao.vercel.app/" target="_blank">
-                        Sistema de gerenciamento de produção
-                    </a>
-                    <img src="./images/sistema-gerenciamento-previa.jpeg"
-                        alt="Prévia do Sistema de Gerenciamento de Produção"
-                        style="display: block; width: 100%; max-width: 300px; height: auto; margin: 10px auto; border-radius: 8px;">
+                    <article class="project-card">
+                        <a href="https://sistemadegerenciamentodeproducao.vercel.app/" target="_blank" rel="noopener noreferrer">Sistema de gerenciamento de produção</a>
+                        <img src="./images/sistema-gerenciamento-previa.jpeg" alt="Prévia do Sistema de Gerenciamento de Produção" loading="lazy" decoding="async" />
+                    </article>
 
-                    <a href="https://github.com/LuizSSZ/Bloco-de-notas-GUI-Ruby" target="_blank">
-                        Bloco de Notas
-                    </a>
-                    <img src="./images/bloco-de-notas-previa" alt="Prévia do Bloco de Notas"
-                        style="display: block; width: 100%; max-width: 300px; height: auto; margin: 10px auto; border-radius: 8px;">
-                    
-           </section>
+                    <article class="project-card">
+                        <a href="https://github.com/LuizSSZ/Bloco-de-notas-GUI-Ruby" target="_blank" rel="noopener noreferrer">Bloco de Notas</a>
+                        <img src="./images/bloco-de-notas-previa" alt="Prévia do Bloco de Notas" loading="lazy" decoding="async" />
+                    </article>
+                </div>
+            </section>
 
-            <p id="tecnico"> <br>
-                <strong>Conhecimentos e Habilidades<strong>
-                        <br>
-            </p>
+            <p id="tecnico"><strong>Conhecimentos e Habilidades</strong></p>
 
+            <div class="tech-stack">
+                <div class="tech-chip"><i class="devicon-docker-plain"></i><span>Docker</span></div>
+                <div class="tech-chip"><i class="devicon-nextjs-original"></i><span>Next.js</span></div>
+                <div class="tech-chip"><i class="devicon-react-original"></i><span>React.js</span></div>
+                <div class="tech-chip"><i class="devicon-typescript-plain"></i><span>TypeScript</span></div>
+                <div class="tech-chip"><i class="devicon-javascript-plain"></i><span>JavaScript</span></div>
+                <div class="tech-chip"><i class="devicon-python-plain"></i><span>Python</span></div>
+                <div class="tech-chip"><i class="devicon-ruby-plain"></i><span>Ruby</span></div>
+                <div class="tech-chip"><i class="devicon-c-plain"></i><span>C</span></div>
+                <div class="tech-chip"><i class="devicon-cplusplus-plain"></i><span>C++</span></div>
+                <div class="tech-chip"><i class="devicon-git-plain"></i><span>Git</span></div>
+                <div class="tech-chip"><i class="devicon-github-original"></i><span>GitHub</span></div>
+                <div class="tech-chip"><i class="fas fa-database"></i><span>SQL</span></div>
+                <div class="tech-chip"><i class="fas fa-file-word"></i><span>Word</span></div>
+                <div class="tech-chip"><i class="fas fa-file-excel"></i><span>Excel</span></div>
+                <div class="tech-chip"><i class="fas fa-pen-ruler"></i><span>Canva</span></div>
+                <div class="tech-chip"><i class="fas fa-building"></i><span>ERP</span></div>
+            </div>
 
-            <p>
-                <br>
-            <ol style="background-color: #2a2a2a; padding: 15px; border-radius: 10px; list-style-type: decimal;">
-                <li class="inside bordered" id="habilidades" style="color: #fff;">Competências Pessoais e Interpessoais:
+            <ol class="skills-list">
+                <li>
+                    Competências Pessoais e Interpessoais:
+                    <ul class="skills-items">
+                        <li><span class="destaque">Vontade de aprender:</span> Interesse contínuo em expandir meus conhecimentos e habilidades, buscando sempre a melhoria pessoal e profissional.</li>
+                        <li><span class="destaque">Bom relacionamento e trabalho em equipe:</span> Experiência em colaboração para alcançar objetivos comuns e manter o time alinhado e motivado.</li>
+                    </ul>
                 </li>
-                <ul class="bordered" style="color: #fff;">
-                    <li>
-                        <span class="destaque" style="font-weight: bold;">Vontade de aprender:</span> Interesse contínuo
-                        em expandir meus conhecimentos e habilidades, buscando sempre a melhoria pessoal e profissional.
-                    </li>
-                    <li>
-                        <span class="destaque" style="font-weight: bold;">Bom relacionamento e trabalho em
-                            equipe:</span> Experiência em colaboração em equipe para alcançar objetivos comuns e
-                        garantir que todos os membros estejam alinhados e motivados.
-                    </li>
-                </ul>
-                <br>
-                <li class="inside bordered" id="habilidades" style="color: #fff;">Programação e Desenvolvimento:</li>
-                <ul class="bordered" style="color: #fff;">
-                    <li>
-                        <span class="destaque" style="font-weight: bold;">Python:</span> Desenvolvimento de scripts e
-                        automações simples; projetos de análise de dados e integração com APIs.
-                    </li>
-                    <li>
-                        <span class="destaque" style="font-weight: bold;">JavaScript:</span> Criação de páginas
-                        interativas; manipulação de DOM e eventos em projetos web.
-                    </li>
-                    <li>
-                        <span class="destaque" style="font-weight: bold;">Ruby:</span> Desenvolvimento básico de scripts
-                        e automações; familiaridade com frameworks como Ruby on Rails.
-                    </li>
-                    <li>
-                        <span class="destaque" style="font-weight: bold;">C / C++:</span> Programação de baixo nível,
-                        familiaridade com estruturas de dados e algoritmos; implementação de pequenas aplicações.
-                    </li>
-                </ul>
-                <br>
-                <li class="inside bordered" id="habilidades" style="color: #fff;">Controle de Versão e Colaboração:</li>
-                <ul class="bordered" style="color: #fff;">
-                    <li>
-                        <span class="destaque" style="font-weight: bold;">Git:</span> Uso de Git para controle de
-                        versão, criação de repositórios, branchs e merges.
-                    </li>
-                    <li>
-                        <span class="destaque" style="font-weight: bold;">GitHub:</span> Publicação de projetos
-                        pessoais.
-                    </li>
-                </ul>
-                <br>
-                <li class="inside bordered" id="habilidades" style="color: #fff;">Banco de Dados e SQL:</li>
-                <ul class="bordered" style="color: #fff;">
-                    <li>
-                        <span class="destaque" style="font-weight: bold;">SQL:</span> Criação de consultas SQL para
-                        manipulação de dados em bancos de dados relacionais; compreensão de operações como SELECT, JOIN,
-                        UPDATE, DELETE.
-                    </li>
-                </ul>
-                <br>
-                <li class="inside bordered" id="habilidades" style="color: #fff;">Ferramentas de Escritório e Design:
+
+                <li>
+                    Programação e Desenvolvimento:
+                    <ul class="skills-items">
+                        <li><span class="destaque">Python:</span> Desenvolvimento de scripts e automações simples; projetos de análise de dados e integração com APIs.</li>
+                        <li><span class="destaque">JavaScript:</span> Criação de páginas interativas; manipulação de DOM e eventos em projetos web.</li>
+                        <li><span class="destaque">Ruby:</span> Desenvolvimento básico de scripts e automações; familiaridade com frameworks como Ruby on Rails.</li>
+                        <li><span class="destaque">C / C++:</span> Programação de baixo nível, familiaridade com estruturas de dados e algoritmos; implementação de pequenas aplicações.</li>
+                    </ul>
                 </li>
-                <ul class="bordered" style="color: #fff;">
-                    <li>
-                        <span class="destaque" style="font-weight: bold;">Microsoft Word e Excel:</span> Criação de
-                        documentos, planilhas e relatórios; análise de dados em Excel utilizando fórmulas e funções.
-                    </li>
-                    <li>
-                        <span class="destaque" style="font-weight: bold;">Canva:</span> Criação de designs gráficos para
-                        apresentações, posts de redes sociais e outros materiais visuais.
-                    </li>
-                </ul>
-                <br>
-                <li class="inside bordered" id="habilidades" style="color: #fff;">Sistemas de Gestão Empresarial (ERP):
+
+                <li>
+                    Controle de Versão e Colaboração:
+                    <ul class="skills-items">
+                        <li><span class="destaque">Git:</span> Uso de Git para controle de versão, criação de repositórios, branches e merges.</li>
+                        <li><span class="destaque">GitHub:</span> Publicação de projetos pessoais.</li>
+                    </ul>
                 </li>
-                <ul class="bordered" style="color: #fff;">
-                    <li>
-                        <span class="destaque" style="font-weight: bold;">ERP's:</span> Experiência básica no uso e
-                        navegação de sistemas ERP para gerenciamento de dados empresariais e processos.
-                    </li>
-                </ul>
-                <br>
+
+                <li>
+                    Banco de Dados e SQL:
+                    <ul class="skills-items">
+                        <li><span class="destaque">SQL:</span> Criação de consultas SQL para manipulação de dados em bancos relacionais; compreensão de operações como SELECT, JOIN, UPDATE e DELETE.</li>
+                    </ul>
+                </li>
+
+                <li>
+                    Ferramentas de Escritório e Design:
+                    <ul class="skills-items">
+                        <li><span class="destaque">Microsoft Word e Excel:</span> Criação de documentos, planilhas e relatórios; análise de dados com fórmulas e funções.</li>
+                        <li><span class="destaque">Canva:</span> Criação de designs gráficos para apresentações, posts e materiais visuais.</li>
+                    </ul>
+                </li>
+
+                <li>
+                    Sistemas de Gestão Empresarial (ERP):
+                    <ul class="skills-items">
+                        <li><span class="destaque">ERP's:</span> Experiência básica no uso e navegação de sistemas ERP para gerenciamento de dados empresariais e processos.</li>
+                    </ul>
+                </li>
             </ol>
-            </p>
-
         </section>
-
     </main>
 
     <footer>
-        © 2025 SugZiuL. Todos os direitos reservados.
+        © 2026 SugZiuL. Todos os direitos reservados.
     </footer>
-    <br>
-    <!-- Estrelas de fundo -->
+
     <script>
-        const numStars = 70;
-        for (let i = 0; i < numStars; i++) {
-            const star = document.createElement('div');
-            star.classList.add('star');
-            star.style.width = `${Math.random() * 2 + 1}px`;
-            star.style.height = star.style.width;
-            star.style.top = `${Math.random() * 100}vh`;
-            star.style.left = `${Math.random() * 100}vw`;
-            star.style.animationDuration = `${Math.random() * 10 + 5}s`;
-            document.body.appendChild(star);
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!reducedMotion) {
+            const starCount = Math.min(40, Math.floor(window.innerWidth / 30));
+            const fragment = document.createDocumentFragment();
+
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                const size = (Math.random() * 1.6 + 0.8).toFixed(2);
+
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${Math.random() * 100}vw`;
+                star.style.top = `${Math.random() * 100}vh`;
+                star.style.animationDuration = `${(Math.random() * 10 + 8).toFixed(2)}s`;
+                star.style.animationDelay = `${(Math.random() * -12).toFixed(2)}s`;
+
+                fragment.appendChild(star);
+            }
+
+            document.body.appendChild(fragment);
         }
     </script>
-
 </body>
 
 </html>

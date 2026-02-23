@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <rect width="800" height="450" fill="#0c1320"/>
+  <rect x="60" y="95" width="680" height="260" rx="18" fill="#1d2e44" stroke="#9bd6ff" stroke-opacity=".35"/>
+  <text x="95" y="195" fill="#edf7ff" font-family="Segoe UI, Arial" font-size="34" font-weight="700">Tony Polimentos</text>
+  <text x="95" y="238" fill="#9fd7ff" font-family="Segoe UI, Arial" font-size="28">em Metais</text>
+  <text x="95" y="285" fill="#c0d8ee" font-family="Consolas, monospace" font-size="18">Placeholder de projeto para portfólio</text>
+</svg>

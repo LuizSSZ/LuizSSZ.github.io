@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <rect width="800" height="450" fill="#151125"/>
+  <rect x="60" y="95" width="680" height="260" rx="18" fill="#24203d" stroke="#b2ccff" stroke-opacity=".35"/>
+  <text x="95" y="210" fill="#f1f5ff" font-family="Segoe UI, Arial" font-size="42" font-weight="700">Micro Fórum</text>
+  <text x="95" y="265" fill="#c7d9ff" font-family="Consolas, monospace" font-size="18">Projeto no GitHub • Placeholder</text>
+</svg>

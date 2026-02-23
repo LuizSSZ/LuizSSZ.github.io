@@ -1,6 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-labelledby="title desc">
+  <title id="title">Echo Projeto</title>
+  <desc id="desc">Projeto web publicado em dominio proprio com foco em apresentacao online.</desc>
   <rect width="800" height="450" fill="#141321"/>
   <rect x="60" y="95" width="680" height="260" rx="18" fill="#22253b" stroke="#a7cfff" stroke-opacity=".35"/>
-  <text x="95" y="205" fill="#f4f7ff" font-family="Segoe UI, Arial" font-size="38" font-weight="700">Echo Projeto</text>
-  <text x="95" y="255" fill="#c7ddff" font-family="Consolas, monospace" font-size="18">Placeholder de projeto para portfólio</text>
+  <text x="95" y="188" fill="#f4f7ff" font-family="Segoe UI, Arial" font-size="38" font-weight="700">Echo Projeto</text>
+  <text x="95" y="235" fill="#c7ddff" font-family="Segoe UI, Arial" font-size="18" font-weight="600">Projeto web publicado em dominio proprio</text>
+  <text x="95" y="265" fill="#e1e9ff" font-family="Segoe UI, Arial" font-size="16">Apresentacao online com foco visual e navegacao direta para o usuario.</text>
 </svg>

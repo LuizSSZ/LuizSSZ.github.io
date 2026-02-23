@@ -1,6 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-labelledby="title desc">
+  <title id="title">Dataemp</title>
+  <desc id="desc">Solucoes de software inovadoras que transformam ideias em realidade.</desc>
   <rect width="800" height="450" fill="#08161f"/>
   <rect x="60" y="95" width="680" height="260" rx="18" fill="#123245" stroke="#8bdcff" stroke-opacity=".35"/>
-  <text x="95" y="215" fill="#ecfbff" font-family="Segoe UI, Arial" font-size="44" font-weight="700">DATAEMP</text>
-  <text x="95" y="270" fill="#b9eaff" font-family="Consolas, monospace" font-size="18">Placeholder de projeto para portfólio</text>
+  <text x="95" y="198" fill="#ecfbff" font-family="Segoe UI, Arial" font-size="44" font-weight="700">DATAEMP</text>
+  <text x="95" y="245" fill="#b9eaff" font-family="Segoe UI, Arial" font-size="18" font-weight="600">Solucoes de software inovadoras que transformam ideias em realidade.</text>
+  <text x="95" y="274" fill="#d2f2ff" font-family="Segoe UI, Arial" font-size="16">Excelencia em desenvolvimento e visao de futuro.</text>
 </svg>

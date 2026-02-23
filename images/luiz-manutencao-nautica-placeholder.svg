@@ -1,6 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-labelledby="title desc">
+  <title id="title">Luiz Manutencao Nautica</title>
+  <desc id="desc">Curso de Arrais Amador e Motonauta com habilitacao nautica oficial.</desc>
   <rect width="800" height="450" fill="#0b1c2d"/>
   <rect x="60" y="95" width="680" height="260" rx="18" fill="#12314a" stroke="#87d8ff" stroke-opacity=".35"/>
-  <text x="95" y="205" fill="#eef8ff" font-family="Segoe UI, Arial" font-size="34" font-weight="700">Luiz Manutenção Náutica</text>
-  <text x="95" y="255" fill="#9edfff" font-family="Consolas, monospace" font-size="18">Placeholder de projeto para portfólio</text>
+  <text x="95" y="188" fill="#eef8ff" font-family="Segoe UI, Arial" font-size="34" font-weight="700">Luiz Manutencao Nautica</text>
+  <text x="95" y="235" fill="#9edfff" font-family="Segoe UI, Arial" font-size="18" font-weight="600">Curso de Arrais Amador e Motonauta • Habilitacao nautica oficial</text>
+  <text x="95" y="265" fill="#c9e9ff" font-family="Segoe UI, Arial" font-size="16">Aula pratica inclusa, material completo e certificacao valida por 10 anos.</text>
 </svg>

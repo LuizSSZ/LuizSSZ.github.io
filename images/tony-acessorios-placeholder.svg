@@ -1,7 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-labelledby="title desc">
+  <title id="title">Tony Acessorios para Veiculos</title>
+  <desc id="desc">Loja especializada em pecas para carros antigos com variedade de autopecas e acessorios.</desc>
   <rect width="800" height="450" fill="#17120e"/>
   <rect x="60" y="95" width="680" height="260" rx="18" fill="#31261d" stroke="#ffd49e" stroke-opacity=".35"/>
-  <text x="95" y="195" fill="#fff4df" font-family="Segoe UI, Arial" font-size="34" font-weight="700">Tony Acessórios</text>
-  <text x="95" y="238" fill="#ffd49e" font-family="Segoe UI, Arial" font-size="28">para Veículos</text>
-  <text x="95" y="285" fill="#e3d0b5" font-family="Consolas, monospace" font-size="18">Placeholder de projeto para portfólio</text>
+  <text x="95" y="188" fill="#fff4df" font-family="Segoe UI, Arial" font-size="34" font-weight="700">Tony Acessorios</text>
+  <text x="95" y="230" fill="#ffd49e" font-family="Segoe UI, Arial" font-size="28">para Veiculos</text>
+  <text x="95" y="270" fill="#f0dcc1" font-family="Segoe UI, Arial" font-size="16">Loja especializada em pecas para carros antigos, com variedade de autopecas.</text>
+  <text x="95" y="296" fill="#e3d0b5" font-family="Segoe UI, Arial" font-size="16">Acessorios automotivos e atendimento para orcamentos online.</text>
 </svg>

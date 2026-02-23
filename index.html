@@ -214,6 +214,13 @@
             border: 1px solid var(--line);
             border-radius: 14px;
             padding: 14px;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(186, 228, 255, 0.55);
+            box-shadow: 0 12px 28px rgba(3, 7, 14, 0.38);
         }
 
         .project-card a {
@@ -227,12 +234,31 @@
             color: var(--primary);
         }
 
+        .project-card:hover a {
+            color: var(--primary);
+        }
+
         .project-card img {
             width: 100%;
             height: 170px;
             object-fit: cover;
             border-radius: 10px;
             border: 1px solid rgba(143, 188, 232, 0.28);
+            transition: transform 0.28s ease, filter 0.28s ease, border-color 0.28s ease;
+            transform-origin: center;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.02);
+            filter: saturate(1.08) brightness(1.04);
+            border-color: rgba(186, 228, 255, 0.45);
+        }
+
+        .project-card .project-desc {
+            color: var(--muted);
+            font-size: 0.9rem;
+            line-height: 1.45;
+            margin-top: 2px;
         }
 
         #tecnico {
@@ -399,45 +425,54 @@
                     <article class="project-card">
                         <a href="https://luizmanutencaonautica.vercel.app/" target="_blank" rel="noopener noreferrer">Luiz Manutenção Náutica</a>
                         <img src="./images/luiz-manutencao-nautica-placeholder.svg" alt="Prévia do projeto Luiz Manutenção Náutica" loading="lazy" decoding="async" />
+                        <p class="project-desc">Curso de Arrais Amador e Motonauta com habilitacao nautica oficial, aula pratica inclusa e certificacao valida por 10 anos.</p>
                     </article>
 
                     <article class="project-card">
                         <a href="https://echoprojeto.online/" target="_blank" rel="noopener noreferrer">Echo Projeto</a>
                         <img src="./images/echo-projeto-placeholder.svg" alt="Prévia do projeto Echo Projeto" loading="lazy" decoding="async" />
+                        <p class="project-desc">Projeto web publicado em dominio proprio com foco em apresentacao online, navegacao direta e experiencia visual.</p>
                     </article>
 
                     <article class="project-card">
                         <a href="https://www.tonypolimentosemmetais.com.br/" target="_blank" rel="noopener noreferrer">Tony Polimentos em Metais</a>
                         <img src="./images/tony-polimentos-placeholder.svg" alt="Prévia do projeto Tony Polimentos em Metais" loading="lazy" decoding="async" />
+                        <p class="project-desc">Site institucional para servicos de polimento em metais, com foco em contato rapido e orcamento sem compromisso.</p>
                     </article>
 
                     <article class="project-card">
                         <a href="https://www.tonyacessoriosparaveiculos.com.br/" target="_blank" rel="noopener noreferrer">Tony Acessórios para Veículos</a>
                         <img src="./images/tony-acessorios-placeholder.svg" alt="Prévia do projeto Tony Acessórios para Veículos" loading="lazy" decoding="async" />
+                        <p class="project-desc">Loja especializada em pecas para carros antigos, com variedade de autopecas e acessorios para veiculos.</p>
                     </article>
 
                     <article class="project-card">
                         <a href="https://www.dataemp.com.br/" target="_blank" rel="noopener noreferrer">Dataemp</a>
                         <img src="./images/dataemp-placeholder.svg" alt="Prévia do projeto Dataemp" loading="lazy" decoding="async" />
+                        <p class="project-desc">Empresa de software com foco em solucoes inovadoras, transformacao digital e desenvolvimento orientado a resultados.</p>
                     </article>
 
                     <article class="project-card">
                         <a href="https://github.com/LuizSSZ/Micro-Forum" target="_blank" rel="noopener noreferrer">Micro Fórum</a>
                         <img src="./images/micro-forum-placeholder.svg" alt="Prévia do projeto Micro Fórum" loading="lazy" decoding="async" />
+                        <p class="project-desc">Mini forum inspirado no micro reddit, publicado no GitHub, com estrutura enxuta para discussoes e posts.</p>
                     </article>
                     <article class="project-card">
                         <a href="https://dislon.sugziul.shop/" target="_blank" rel="noopener noreferrer">LLM + RAG = ChatBot</a>
                         <img src="./images/chatbot.jpg" alt="Prévia Modelo de LLM que utiliza RAG" loading="lazy" decoding="async" />
+                        <p class="project-desc">Chatbot com LLM e RAG para respostas contextualizadas, integrando busca de conhecimento e interface web.</p>
                     </article>
 
                     <article class="project-card">
                         <a href="https://sistemadegerenciamentodeproducao.vercel.app/" target="_blank" rel="noopener noreferrer">Sistema de gerenciamento de produção</a>
                         <img src="./images/sistema-gerenciamento-previa.jpeg" alt="Prévia do Sistema de Gerenciamento de Produção" loading="lazy" decoding="async" />
+                        <p class="project-desc">Aplicacao web para controle de producao, organizacao de processos e acompanhamento operacional.</p>
                     </article>
 
                     <article class="project-card">
                         <a href="https://github.com/LuizSSZ/Bloco-de-notas-GUI-Ruby" target="_blank" rel="noopener noreferrer">Bloco de Notas</a>
                         <img src="./images/bloco-de-notas-previa" alt="Prévia do Bloco de Notas" loading="lazy" decoding="async" />
+                        <p class="project-desc">Aplicativo desktop em Ruby com interface grafica para anotacoes rapidas e uso cotidiano.</p>
                     </article>
                 </div>
             </section>

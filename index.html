@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
@@ -14,366 +14,520 @@
 
     <style>
         :root {
-            --bg: #050a14;
-            --bg-2: #0a1628;
-            --surface: rgba(12, 25, 43, 0.72);
-            --surface-2: rgba(16, 35, 58, 0.88);
-            --text: #e7f0ff;
-            --muted: #9db4cf;
-            --primary: #7ad5ff;
-            --line: rgba(142, 185, 228, 0.25);
-            --shadow: 0 14px 28px rgba(3, 7, 14, 0.45);
-            --radius: 16px;
+            --bg: #060913;
+            --canvas: rgba(15, 23, 36, 0.9);
+            --subtle: rgba(10, 16, 28, 0.9);
+            --border: rgba(141, 168, 196, 0.2);
+            --border-strong: rgba(141, 168, 196, 0.45);
+            --text: #e6edf3;
+            --muted: #9fb0c2;
+            --accent: #7cc7ff;
+            --shadow: 0 1px 0 rgba(255, 255, 255, 0.03), 0 12px 30px rgba(2, 7, 16, 0.45);
+            --radius: 10px;
         }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
             color: var(--text);
-            min-height: 100vh;
             background:
-                radial-gradient(circle at 15% 10%, rgba(71, 141, 211, 0.28), transparent 34%),
-                radial-gradient(circle at 85% 18%, rgba(52, 110, 171, 0.22), transparent 36%),
-                linear-gradient(165deg, var(--bg), var(--bg-2) 42%, var(--bg));
-            line-height: 1.65;
-            overflow-x: hidden;
-            position: relative;
+                radial-gradient(circle at 12% 12%, rgba(124, 199, 255, 0.12), transparent 36%),
+                radial-gradient(circle at 88% 8%, rgba(118, 102, 255, 0.12), transparent 34%),
+                radial-gradient(circle at 50% 120%, rgba(70, 124, 255, 0.14), transparent 42%),
+                var(--bg);
+            line-height: 1.55;
+            min-height: 100vh;
         }
-
         body::before {
             content: "";
             position: fixed;
             inset: 0;
             pointer-events: none;
-            background-image: radial-gradient(circle, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
-            background-size: 3px 3px;
-            opacity: 0.08;
+            background-image: radial-gradient(circle, rgba(230, 237, 243, 0.25) 1px, transparent 1.2px);
+            background-size: 4px 4px;
+            opacity: 0.07;
         }
-
-        header {
-            max-width: 1080px;
+        body::after {
+            content: "";
+            position: fixed;
+            inset: -16% -10% auto -10%;
+            height: 38vh;
+            pointer-events: none;
+            background:
+                radial-gradient(circle at 18% 48%, rgba(124, 199, 255, 0.12), transparent 50%),
+                radial-gradient(circle at 78% 36%, rgba(141, 110, 255, 0.1), transparent 48%);
+            filter: blur(22px);
+            opacity: 0.9;
+        }
+        .gh-nav {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: linear-gradient(180deg, rgba(12, 18, 31, 0.96), rgba(9, 14, 24, 0.92));
+            border-bottom: 1px solid rgba(141, 168, 196, 0.18);
+            backdrop-filter: blur(10px);
+            padding: 12px 20px;
+        }
+        .gh-nav-inner {
+            max-width: 1120px;
             margin: 0 auto;
-            padding: 72px 20px 24px;
-            text-align: center;
-        }
-
-        header h1 {
-            font-size: clamp(2.2rem, 5vw, 3.8rem);
-            font-weight: 700;
-            letter-spacing: 0.04em;
-            text-shadow: 0 0 24px rgba(122, 213, 255, 0.32);
-        }
-
-        header h3 {
-            margin-top: 8px;
-            color: var(--primary);
-            font-size: 1rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            font-weight: 500;
-        }
-
-        header h2 {
-            margin-top: 10px;
-            color: var(--muted);
-            font-size: 1.05rem;
-            font-weight: 500;
-        }
-
-        .container {
             display: flex;
-            justify-content: center;
-            margin-top: 28px;
+            align-items: center;
+            gap: 16px;
+            color: #f0f6fc;
         }
-
-        .profile-img {
-            width: 190px;
-            height: 190px;
+        .gh-logo {
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             overflow: hidden;
-            border: 3px solid rgba(122, 213, 255, 0.8);
-            position: relative;
-            box-shadow: var(--shadow), 0 0 0 10px rgba(23, 54, 87, 0.35);
-            transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+            border: 1px solid rgba(230, 237, 243, 0.35);
+            box-shadow: 0 0 0 2px rgba(124, 199, 255, 0.08);
+            flex: 0 0 auto;
         }
-
+        .gh-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .gh-nav-title {
+            font-size: 0.95rem;
+            color: #b8c7d6;
+        }
+        .gh-nav-title strong {
+            color: #eef6ff;
+            font-weight: 600;
+        }
+        .page-shell {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 24px 20px 56px;
+        }
+        header {
+            background: linear-gradient(180deg, rgba(19, 28, 44, 0.96), rgba(13, 20, 32, 0.94));
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            box-shadow: var(--shadow);
+            padding: 24px;
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            grid-template-areas:
+                "avatar name"
+                "avatar user"
+                "avatar bio";
+            gap: 6px 20px;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(circle at 14% 20%, rgba(124, 199, 255, 0.1), transparent 34%),
+                radial-gradient(circle at 88% 12%, rgba(141, 110, 255, 0.08), transparent 28%);
+        }
+        header > * {
+            position: relative;
+            z-index: 1;
+        }
+        header h1 {
+            grid-area: name;
+            font-size: clamp(1.9rem, 3vw, 2.35rem);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+        header h3 {
+            grid-area: user;
+            color: var(--muted);
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
+        header h2 {
+            grid-area: bio;
+            color: var(--muted);
+            font-size: 1rem;
+            font-weight: 400;
+            max-width: 68ch;
+        }
+        .container {
+            grid-area: avatar;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 0;
+        }
+        .profile-img {
+            width: 184px;
+            height: 184px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: linear-gradient(180deg, rgba(22, 31, 46, 1), rgba(12, 18, 28, 1));
+            position: relative;
+            box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04);
+            transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+        }
         .profile-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: opacity 0.28s ease;
+            transition: opacity 0.2s ease;
         }
-
         .profile-img::after {
             content: "";
             position: absolute;
             inset: 0;
             background: url('./images/luiz-gustavo.png') center/cover;
             opacity: 0;
-            transition: opacity 0.28s ease;
+            transition: opacity 0.2s ease;
         }
-
         .profile-img:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 36px rgba(3, 7, 14, 0.52), 0 0 26px rgba(122, 213, 255, 0.24);
-            border-color: #bcecff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(2, 7, 16, 0.45);
+            border-color: var(--border-strong);
         }
-
         .profile-img:hover img {
             opacity: 0;
         }
-
         .profile-img:hover::after {
             opacity: 1;
         }
-
         main {
-            max-width: 1080px;
-            margin: 0 auto;
-            padding: 12px 20px 56px;
-        }
-
-        section {
-            background: var(--surface);
-            border: 1px solid var(--line);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            backdrop-filter: blur(6px);
-            margin: 24px 0;
-            padding: 28px 22px;
-        }
-
-        section h3 {
-            text-align: center;
-            margin-bottom: 14px;
-            font-size: 1.45rem;
-            letter-spacing: 0.01em;
-        }
-
-        #sobre>p {
-            color: var(--muted);
-            max-width: 74ch;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .socials {
             margin-top: 18px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 12px;
         }
-
-        .socials a {
-            background: rgba(10, 21, 38, 0.95);
-            border: 1px solid var(--line);
-            border-radius: 12px;
+        section {
+            background: linear-gradient(180deg, rgba(17, 24, 38, 0.92), rgba(12, 18, 28, 0.9));
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            margin: 16px 0;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        section::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(circle at 92% 14%, rgba(124, 199, 255, 0.06), transparent 28%),
+                radial-gradient(circle at 8% 84%, rgba(141, 110, 255, 0.05), transparent 28%);
+        }
+        section > * {
+            position: relative;
+            z-index: 1;
+        }
+        section h3 {
+            margin-bottom: 14px;
+            font-size: 1.05rem;
+            font-weight: 600;
             color: var(--text);
-            text-decoration: none;
-            padding: 14px 10px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+            text-align: left;
+        }
+        #sobre {
+            background: transparent;
+            border: 0;
+            padding: 0;
+        }
+        #sobre > h3 {
+            background: linear-gradient(180deg, rgba(19, 28, 44, 0.95), rgba(13, 20, 32, 0.92));
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 14px 16px;
+            margin-bottom: 12px;
+        }
+        #sobre > p {
+            color: var(--muted);
+            background: linear-gradient(180deg, rgba(19, 28, 44, 0.95), rgba(13, 20, 32, 0.92));
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 16px;
+            margin: 0 0 16px;
+            max-width: none;
+            text-align: left;
+        }
+        #socials h3,
+        #projects h3 {
             display: flex;
-            flex-direction: column;
             align-items: center;
             gap: 8px;
-            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
         }
-
-        .socials a:hover {
-            transform: translateY(-3px);
-            border-color: rgba(186, 228, 255, 0.8);
-            box-shadow: 0 8px 20px rgba(3, 7, 14, 0.45);
+        #socials h3::before {
+            content: "\\f1e0";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: var(--muted);
+            font-size: 0.9rem;
         }
-
-        .socials i {
-            font-size: 1.5rem;
-            color: var(--primary);
+        #projects h3::before {
+            content: "\\f07b";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: var(--muted);
+            font-size: 0.9rem;
         }
-
-        .socials p {
-            font-family: 'Fira Code', monospace;
-            font-size: 0.92rem;
-        }
-
-        .projects {
-            margin-top: 18px;
+        .socials {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 12px;
+        }
+        .socials a {
+            background: rgba(10, 16, 28, 0.92);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            text-decoration: none;
+            padding: 12px 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: border-color 0.15s ease, background-color 0.15s ease, transform 0.15s ease;
+        }
+        .socials a:hover {
+            background: rgba(15, 23, 36, 0.98);
+            border-color: var(--border-strong);
+            transform: translateY(-1px);
+            box-shadow: 0 0 0 1px rgba(124, 199, 255, 0.08) inset, 0 10px 18px rgba(2, 7, 16, 0.18);
+        }
+        .socials i {
+            color: var(--muted);
+            font-size: 1.2rem;
+            width: 18px;
+            text-align: center;
+        }
+        .socials p {
+            font-family: "Fira Code", monospace;
+            font-size: 0.88rem;
+        }
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
             gap: 14px;
         }
-
         .project-card {
+            position: relative;
             display: flex;
             flex-direction: column;
             gap: 10px;
-            background: var(--surface-2);
-            border: 1px solid var(--line);
-            border-radius: 14px;
+            background: linear-gradient(180deg, rgba(15, 23, 36, 0.95), rgba(10, 16, 28, 0.92));
+            border: 1px solid var(--border);
+            border-radius: 10px;
             padding: 14px;
-            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+            transition: border-color 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease;
+            overflow: hidden;
+            cursor: pointer;
         }
-
+        .project-card::after {
+            content: "";
+            position: absolute;
+            inset: -25% 42% auto -20%;
+            height: 88px;
+            pointer-events: none;
+            background: radial-gradient(circle, rgba(124, 199, 255, 0.14), transparent 70%);
+            opacity: 0.7;
+        }
+        .project-card::before {
+            content: "Público";
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 2px 8px;
+            font-size: 0.72rem;
+            color: var(--muted);
+            background: rgba(13, 20, 32, 0.96);
+        }
         .project-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(186, 228, 255, 0.55);
-            box-shadow: 0 12px 28px rgba(3, 7, 14, 0.38);
+            transform: translateY(-2px);
+            border-color: rgba(124, 199, 255, 0.35);
+            box-shadow: 0 10px 24px rgba(2, 7, 16, 0.35);
         }
-
         .project-card a {
-            color: #f2f8ff;
+            color: var(--accent);
             text-decoration: none;
+            font-size: 1rem;
             font-weight: 600;
-            transition: color 0.2s ease;
+            line-height: 1.25;
+            padding-right: 72px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
-
-        .project-card a:hover {
-            color: var(--primary);
+        .project-card a::before {
+            content: "\\f07b";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 400;
+            color: var(--muted);
+            font-size: 0.92rem;
         }
-
-        .project-card:hover a {
-            color: var(--primary);
+        .project-card a::after {
+            content: "\\f35d";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: transparent;
+            font-size: 0.8rem;
+            transition: color 0.15s ease;
         }
-
+        .project-card:hover a::after,
+        .project-card a:hover::after {
+            color: var(--accent);
+        }
         .project-card img {
             width: 100%;
-            height: 170px;
+            height: 168px;
             object-fit: cover;
-            border-radius: 10px;
-            border: 1px solid rgba(143, 188, 232, 0.28);
-            transition: transform 0.28s ease, filter 0.28s ease, border-color 0.28s ease;
-            transform-origin: center;
+            border-radius: 7px;
+            border: 1px solid var(--border);
+            background: rgba(10, 16, 28, 0.92);
+            transition: border-color 0.16s ease;
         }
-
         .project-card:hover img {
-            transform: scale(1.02);
-            filter: saturate(1.08) brightness(1.04);
-            border-color: rgba(186, 228, 255, 0.45);
+            border-color: rgba(124, 199, 255, 0.28);
         }
-
         .project-card .project-desc {
             color: var(--muted);
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             line-height: 1.45;
-            margin-top: 2px;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            min-height: 5.1em;
+            margin-top: 0;
         }
-
         #tecnico {
-            margin: 8px 0 10px;
-            text-align: center;
-            font-size: 1.4rem;
-            color: var(--primary);
+            margin: 18px 0 12px;
+            color: var(--text);
+            background: linear-gradient(180deg, rgba(19, 28, 44, 0.95), rgba(13, 20, 32, 0.92));
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 14px 16px;
+            text-align: left;
+            font-size: 1.05rem;
         }
-
-        .skills-list {
-            background: rgba(11, 25, 44, 0.94);
-            border: 1px solid var(--line);
-            border-radius: 14px;
-            padding: 22px 24px;
-            list-style: decimal;
-            color: #ddecff;
-        }
-
-        .skills-list>li {
-            margin: 10px 0;
-            font-size: 1.08rem;
-            font-weight: 600;
-        }
-
-        .skills-items {
-            list-style: none;
-            margin: 8px 0 16px;
-            color: var(--muted);
-        }
-
-        .skills-items li {
-            margin: 8px 0;
-            font-size: 0.98rem;
-            font-weight: 400;
-        }
-
-        .destaque {
-            color: var(--primary);
-            font-weight: 600;
-        }
-
         .tech-stack {
-            margin: 14px 0 18px;
+            margin: 0 0 16px;
+            background: linear-gradient(180deg, rgba(19, 28, 44, 0.95), rgba(13, 20, 32, 0.92));
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 14px;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
             gap: 10px;
         }
-
         .tech-chip {
-            background: rgba(10, 21, 38, 0.95);
-            border: 1px solid var(--line);
-            border-radius: 12px;
-            padding: 10px 8px;
+            background: rgba(10, 16, 28, 0.92);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 9px 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
-            font-size: 0.92rem;
-            color: #d7e8fb;
+            font-size: 0.9rem;
+            color: var(--text);
+            transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
         }
-
+        .tech-chip:hover {
+            transform: translateY(-1px);
+            border-color: rgba(124, 199, 255, 0.3);
+            box-shadow: 0 8px 18px rgba(2, 7, 16, 0.2);
+        }
         .tech-chip i {
-            font-size: 1.2rem;
-            color: var(--primary);
+            font-size: 1.05rem;
+            color: var(--muted);
         }
-
         .tech-chip .devicon-nextjs-original {
-            color: #f4f8ff;
+            color: var(--text);
         }
-
+        .skills-list {
+            background: linear-gradient(180deg, rgba(19, 28, 44, 0.95), rgba(13, 20, 32, 0.92));
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px 22px;
+            list-style: decimal;
+            color: var(--text);
+        }
+        .skills-list > li {
+            margin: 10px 0;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        .skills-items {
+            list-style: none;
+            margin: 8px 0 14px;
+            color: var(--muted);
+        }
+        .skills-items li {
+            margin: 8px 0;
+            font-size: 0.93rem;
+            font-weight: 400;
+        }
+        .destaque {
+            color: var(--accent);
+            font-weight: 600;
+        }
         footer {
+            margin-top: 18px;
             text-align: center;
             color: var(--muted);
-            font-size: 0.92rem;
-            padding: 16px 20px 30px;
+            font-size: 0.9rem;
+            padding: 8px 12px 4px;
         }
-
-        .star {
-            position: fixed;
-            border-radius: 50%;
-            background: #fff;
-            opacity: 0.45;
-            pointer-events: none;
-            animation: drift linear infinite;
-            will-change: transform;
-        }
-
-        @keyframes drift {
-            from {
-                transform: translate3d(0, -6vh, 0);
-            }
-
-            to {
-                transform: translate3d(0, 106vh, 0);
-            }
-        }
-
-        @media (max-width: 760px) {
+        @media (max-width: 900px) {
             header {
-                padding-top: 46px;
+                grid-template-columns: 1fr;
+                grid-template-areas:
+                    "avatar"
+                    "name"
+                    "user"
+                    "bio";
+                text-align: center;
+                gap: 8px;
             }
-
+            .container {
+                justify-content: center;
+            }
+            header h2 {
+                margin: 0 auto;
+            }
+        }
+        @media (max-width: 760px) {
+            .page-shell {
+                padding: 16px 12px 36px;
+            }
+            .gh-nav {
+                padding: 10px 12px;
+            }
+            header,
             section {
-                padding: 20px 14px;
+                padding: 14px;
             }
-
+            .profile-img {
+                width: 146px;
+                height: 146px;
+            }
+            .projects {
+                grid-template-columns: 1fr;
+            }
             .project-card img {
                 height: 160px;
             }
-
             .skills-list {
-                padding: 16px;
+                padding: 14px 16px;
             }
         }
-
         @media (prefers-reduced-motion: reduce) {
             * {
                 animation: none !important;
@@ -385,6 +539,14 @@
 </head>
 
 <body>
+    <nav class="gh-nav" aria-label="Navegação principal">
+        <div class="gh-nav-inner">
+            <div class="gh-logo" aria-hidden="true"><img src="images/logo_do_port.png" alt="" /></div>
+            <div class="gh-nav-title"><strong>LuizSSZ</strong> / portfolio</div>
+        </div>
+    </nav>
+
+    <div class="page-shell">
     <header>
         <h1>Luiz Gustavo</h1>
         <h3>(SugZiuL)</h3>
@@ -423,39 +585,45 @@
                 <h3>Meus Projetos</h3>
                 <div class="projects">
                     <article class="project-card">
+                        <a href="https://www.pibulafacil.com.br/" target="_blank" rel="noopener noreferrer">Bula Fácil</a>
+                        <img src="./images/pibula-facil-placeholder.svg" alt="Prévia do projeto Bula Fácil" loading="lazy" decoding="async" />
+                        <p class="project-desc">O Bula Fácil traduz bulas de medicamentos para uma linguagem clara, com áudio, organização de horários e orientação segura para toda a família.</p>
+                    </article>
+
+                    <article class="project-card">
                         <a href="https://luizmanutencaonautica.vercel.app/" target="_blank" rel="noopener noreferrer">Luiz Manutenção Náutica</a>
                         <img src="./images/luiz-manutencao-nautica-placeholder.svg" alt="Prévia do projeto Luiz Manutenção Náutica" loading="lazy" decoding="async" />
-                        <p class="project-desc">Curso de Arrais Amador e Motonauta com habilitacao nautica oficial, aula pratica inclusa e certificacao valida por 10 anos.</p>
+                        <p class="project-desc">Curso de Arrais Amador e Motonauta com habilitação náutica oficial, aula prática inclusa e certificação válida por 10 anos.</p>
                     </article>
 
                     <article class="project-card">
                         <a href="https://echoprojeto.online/" target="_blank" rel="noopener noreferrer">Echo Projeto</a>
                         <img src="./images/echo-projeto-placeholder.svg" alt="Prévia do projeto Echo Projeto" loading="lazy" decoding="async" />
-                        <p class="project-desc">Projeto web publicado em dominio proprio com foco em apresentacao online, navegacao direta e experiencia visual.</p>
+                        <p class="project-desc">Projeto web publicado em domínio próprio com foco em apresentação online, navegação direta e experiência visual.</p>
                     </article>
 
                     <article class="project-card">
                         <a href="https://www.tonypolimentosemmetais.com.br/" target="_blank" rel="noopener noreferrer">Tony Polimentos em Metais</a>
                         <img src="./images/tony-polimentos-placeholder.svg" alt="Prévia do projeto Tony Polimentos em Metais" loading="lazy" decoding="async" />
-                        <p class="project-desc">Site institucional para servicos de polimento em metais, com foco em contato rapido e orcamento sem compromisso.</p>
+                        <p class="project-desc">Site institucional para serviços de polimento em metais, com foco em contato rápido e orçamento sem compromisso.</p>
                     </article>
 
                     <article class="project-card">
                         <a href="https://www.tonyacessoriosparaveiculos.com.br/" target="_blank" rel="noopener noreferrer">Tony Acessórios para Veículos</a>
                         <img src="./images/tony-acessorios-placeholder.svg" alt="Prévia do projeto Tony Acessórios para Veículos" loading="lazy" decoding="async" />
-                        <p class="project-desc">Loja especializada em pecas para carros antigos, com variedade de autopecas e acessorios para veiculos.</p>
+                        <p class="project-desc">Loja especializada em peças para carros antigos, com variedade de autopeças e acessórios para veículos.</p>
                     </article>
 
                     <article class="project-card">
                         <a href="https://www.dataemp.com.br/" target="_blank" rel="noopener noreferrer">Dataemp</a>
                         <img src="./images/dataemp-placeholder.svg" alt="Prévia do projeto Dataemp" loading="lazy" decoding="async" />
-                        <p class="project-desc">Empresa de software com foco em solucoes inovadoras, transformacao digital e desenvolvimento orientado a resultados.</p>
+                        <p class="project-desc">Empresa de software com foco em soluções inovadoras, transformação digital e desenvolvimento orientado a resultados.</p>
                     </article>
 
                     <article class="project-card">
                         <a href="https://github.com/LuizSSZ/Micro-Forum" target="_blank" rel="noopener noreferrer">Micro Fórum</a>
                         <img src="./images/micro-forum-placeholder.svg" alt="Prévia do projeto Micro Fórum" loading="lazy" decoding="async" />
-                        <p class="project-desc">Mini forum inspirado no micro reddit, publicado no GitHub, com estrutura enxuta para discussoes e posts.</p>
+                        <p class="project-desc">Mini fórum inspirado no micro reddit, publicado no GitHub, com estrutura enxuta para discussões e posts.</p>
                     </article>
                     <article class="project-card">
                         <a href="https://dislon.sugziul.shop/" target="_blank" rel="noopener noreferrer">LLM + RAG = ChatBot</a>
@@ -466,22 +634,22 @@
                     <article class="project-card">
                         <a href="https://sistemadegerenciamentodeproducao.vercel.app/" target="_blank" rel="noopener noreferrer">Sistema de gerenciamento de produção</a>
                         <img src="./images/sistema-gerenciamento-previa.jpeg" alt="Prévia do Sistema de Gerenciamento de Produção" loading="lazy" decoding="async" />
-                        <p class="project-desc">Aplicacao web para controle de producao, organizacao de processos e acompanhamento operacional.</p>
+                        <p class="project-desc">Aplicação web para controle de produção, organização de processos e acompanhamento operacional.</p>
                     </article>
 
                     <article class="project-card">
                         <a href="https://github.com/LuizSSZ/Bloco-de-notas-GUI-Ruby" target="_blank" rel="noopener noreferrer">Bloco de Notas</a>
                         <img src="./images/bloco-de-notas-previa" alt="Prévia do Bloco de Notas" loading="lazy" decoding="async" />
-                        <p class="project-desc">Aplicativo desktop em Ruby com interface grafica para anotacoes rapidas e uso cotidiano.</p>
+                        <p class="project-desc">Aplicativo desktop em Ruby com interface gráfica para anotações rápidas e uso cotidiano.</p>
                     </article>
                 </div>
             </section>
 
-            <p id="tecnico"><strong>Conhecimentos e Habilidades</strong></p>
+            <p id="tecnico"><strong>Conhecimentos e Habilidades (Nível Intermediário)</strong></p>
 
             <div class="tech-stack">
                 <div class="tech-chip"><i class="devicon-docker-plain"></i><span>Docker</span></div>
-                <div class="tech-chip"><i class="devicon-nextjs-original"></i><span>Next.js</span></div>
+                <div class="tech-chip"><i class="devicon-nodejs-plain"></i><span>Node.js</span></div>
                 <div class="tech-chip"><i class="devicon-react-original"></i><span>React.js</span></div>
                 <div class="tech-chip"><i class="devicon-typescript-plain"></i><span>TypeScript</span></div>
                 <div class="tech-chip"><i class="devicon-javascript-plain"></i><span>JavaScript</span></div>
@@ -491,6 +659,9 @@
                 <div class="tech-chip"><i class="devicon-cplusplus-plain"></i><span>C++</span></div>
                 <div class="tech-chip"><i class="devicon-git-plain"></i><span>Git</span></div>
                 <div class="tech-chip"><i class="devicon-github-original"></i><span>GitHub</span></div>
+                <div class="tech-chip"><i class="fab fa-aws"></i><span>AWS</span></div>
+                <div class="tech-chip"><i class="fab fa-microsoft"></i><span>Azure</span></div>
+                <div class="tech-chip"><i class="devicon-postgresql-plain"></i><span>PostgreSQL</span></div>
                 <div class="tech-chip"><i class="fas fa-database"></i><span>SQL</span></div>
                 <div class="tech-chip"><i class="fas fa-file-word"></i><span>Word</span></div>
                 <div class="tech-chip"><i class="fas fa-file-excel"></i><span>Excel</span></div>
@@ -510,25 +681,26 @@
                 <li>
                     Programação e Desenvolvimento:
                     <ul class="skills-items">
-                        <li><span class="destaque">Python:</span> Desenvolvimento de scripts e automações simples; projetos de análise de dados e integração com APIs.</li>
-                        <li><span class="destaque">JavaScript:</span> Criação de páginas interativas; manipulação de DOM e eventos em projetos web.</li>
-                        <li><span class="destaque">Ruby:</span> Desenvolvimento básico de scripts e automações; familiaridade com frameworks como Ruby on Rails.</li>
-                        <li><span class="destaque">C / C++:</span> Programação de baixo nível, familiaridade com estruturas de dados e algoritmos; implementação de pequenas aplicações.</li>
+                        <li><span class="destaque">Python:</span> Nível intermediário em automações, integração com APIs e desenvolvimento de scripts para produtividade e análise de dados.</li>
+                        <li><span class="destaque">JavaScript:</span> Nível intermediário em páginas interativas, manipulação de DOM, consumo de APIs e interfaces web.</li>
+                        <li><span class="destaque">Ruby:</span> Nível intermediário em scripts, aplicações desktop e fundamentos de frameworks como Ruby on Rails.</li>
+                        <li><span class="destaque">C / C++:</span> Conhecimento prático em lógica, estruturas de dados, algoritmos e implementação de aplicações de médio porte.</li>
                     </ul>
                 </li>
 
                 <li>
-                    Controle de Versão e Colaboração:
+                    Controle de Versão, Colaboração e Deploy:
                     <ul class="skills-items">
-                        <li><span class="destaque">Git:</span> Uso de Git para controle de versão, criação de repositórios, branches e merges.</li>
-                        <li><span class="destaque">GitHub:</span> Publicação de projetos pessoais.</li>
+                        <li><span class="destaque">Git / GitHub:</span> Nível intermediário em versionamento, branches, merges, organização de repositórios e publicação de projetos.</li>
+                        <li><span class="destaque">Docker:</span> Uso em ambiente de desenvolvimento, padronização de serviços e execução de aplicações em containers.</li>
+                        <li><span class="destaque">AWS e Azure:</span> Conhecimentos em serviços de nuvem, deploy e organização de ambientes para aplicações web.</li>
                     </ul>
                 </li>
 
                 <li>
                     Banco de Dados e SQL:
                     <ul class="skills-items">
-                        <li><span class="destaque">SQL:</span> Criação de consultas SQL para manipulação de dados em bancos relacionais; compreensão de operações como SELECT, JOIN, UPDATE e DELETE.</li>
+                        <li><span class="destaque">SQL / PostgreSQL:</span> Nível intermediário em modelagem básica e consultas para manipulação de dados (SELECT, JOIN, UPDATE e DELETE) em bancos relacionais.</li>
                     </ul>
                 </li>
 
@@ -551,33 +723,31 @@
     </main>
 
     <footer>
-        © 2026 SugZiuL. Todos os direitos reservados.
+        (c) 2026 SugZiuL. Todos os direitos reservados.
     </footer>
-
+    </div>
     <script>
-        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        if (!reducedMotion) {
-            const starCount = Math.min(40, Math.floor(window.innerWidth / 30));
-            const fragment = document.createDocumentFragment();
+        document.querySelectorAll('.project-card').forEach((card) => {
+            const link = card.querySelector('a[href]');
+            if (!link) return;
 
-            for (let i = 0; i < starCount; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                const size = (Math.random() * 1.6 + 0.8).toFixed(2);
+            card.tabIndex = 0;
 
-                star.style.width = `${size}px`;
-                star.style.height = `${size}px`;
-                star.style.left = `${Math.random() * 100}vw`;
-                star.style.top = `${Math.random() * 100}vh`;
-                star.style.animationDuration = `${(Math.random() * 10 + 8).toFixed(2)}s`;
-                star.style.animationDelay = `${(Math.random() * -12).toFixed(2)}s`;
+            card.addEventListener('click', (event) => {
+                if (event.target.closest('a')) return;
+                link.click();
+            });
 
-                fragment.appendChild(star);
-            }
-
-            document.body.appendChild(fragment);
-        }
+            card.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    link.click();
+                }
+            });
+        });
     </script>
 </body>
 
 </html>
+
+

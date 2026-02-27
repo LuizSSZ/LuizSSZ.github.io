@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-labelledby="title desc">
+  <title id="title">SDJ-botNivers</title>
+  <desc id="desc">Bot para automacao de aniversarios em servidor Discord.</desc>
+  <rect width="800" height="450" fill="#101827"/>
+  <rect x="64" y="84" width="672" height="282" rx="20" fill="#1b2740" stroke="#9bc6ff" stroke-opacity=".35"/>
+  <circle cx="126" cy="138" r="10" fill="#74b7ff"/>
+  <circle cx="158" cy="138" r="10" fill="#4f8dff"/>
+  <circle cx="190" cy="138" r="10" fill="#2f6bff"/>
+  <text x="94" y="210" fill="#eaf3ff" font-family="Segoe UI, Arial" font-size="44" font-weight="700">SDJ-botNivers</text>
+  <text x="94" y="256" fill="#cde0ff" font-family="Segoe UI, Arial" font-size="19" font-weight="600">Bot de aniversarios para Discord</text>
+  <text x="94" y="286" fill="#dbe8ff" font-family="Segoe UI, Arial" font-size="16">Automacao de alertas, lembretes e mensagens para a comunidade.</text>
+</svg>
